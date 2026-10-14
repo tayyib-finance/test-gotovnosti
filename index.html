@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#173c2c">
-
 <title>Проверка перед рассрочкой</title>
 
 <style>
@@ -13,21 +12,17 @@
   --muted: #66736b;
   --line: #dfe7e0;
   --paper: #f4f7f3;
-  --card: #ffffff;
   --green: #173c2c;
   --green2: #eaf3e8;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font: 16px/1.5 -apple-system, BlinkMacSystemFont,
-        "Segoe UI", Arial, sans-serif;
+  font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 
 .wrap {
@@ -58,10 +53,7 @@ h1 {
   margin: 0 0 12px;
 }
 
-header p {
-  margin: 0;
-  color: #e3eee6;
-}
+header p { margin: 0; color: #e3eee6; }
 
 .progress {
   display: flex;
@@ -88,7 +80,7 @@ header p {
 }
 
 .card {
-  background: var(--card);
+  background: white;
   border: 1px solid var(--line);
   border-radius: 15px;
   padding: 18px;
@@ -120,7 +112,7 @@ header p {
 .hint {
   font-size: 13px;
   color: var(--muted);
-  margin: -5px 0 13px;
+  margin: 8px 0;
 }
 
 .options {
@@ -177,6 +169,30 @@ input[type="checkbox"] {
   gap: 12px;
 }
 
+.phone-wrap {
+  display: flex;
+  align-items: stretch;
+  margin-top: 8px;
+}
+
+.phone-prefix {
+  display: flex;
+  align-items: center;
+  padding: 0 13px;
+  background: #eaf0e9;
+  border: 1px solid #cfd9d0;
+  border-right: 0;
+  border-radius: 10px 0 0 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.phone-wrap .field {
+  margin: 0;
+  border-radius: 0 10px 10px 0;
+  min-width: 0;
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
@@ -213,7 +229,7 @@ input:focus-visible {
 
 .result {
   display: none;
-  background: #fff;
+  background: white;
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 16px;
@@ -222,9 +238,7 @@ input:focus-visible {
   overflow-wrap: anywhere;
 }
 
-.result.show {
-  display: block;
-}
+.result.show { display: block; }
 
 .small {
   font-size: 12px;
@@ -238,50 +252,26 @@ footer {
 }
 
 @media (max-width: 600px) {
-  .options {
-    grid-template-columns: 1fr;
-  }
-
-  .two {
-    grid-template-columns: 1fr;
-  }
-
-  .card {
-    padding: 15px;
-  }
-
-  .wrap {
-    padding: 14px 10px 34px;
-  }
-
-  header {
-    padding: 21px 17px;
-  }
+  .options { grid-template-columns: 1fr; }
+  .two { grid-template-columns: 1fr; }
+  .card { padding: 15px; }
+  .wrap { padding: 14px 10px 34px; }
+  header { padding: 21px 17px; }
 }
 </style>
 </head>
 
 <body>
-
 <div class="wrap">
 
 <header>
   <p class="eyebrow">Самопроверка перед договором</p>
-
-  <h1>
-    Понимаете ли вы условия сделки
-    и обязательство по оплате?
-  </h1>
-
-  <p>
-    Ответьте на вопросы до подписания договора.
-    Все вопросы находятся на одной странице.
-  </p>
+  <h1>Понимаете ли вы условия сделки и обязательство по оплате?</h1>
+  <p>Ответьте на вопросы до подписания договора. Все вопросы находятся на одной странице.</p>
 </header>
 
 <div class="progress">
   <span id="progressText">Отвечено: 0 из 9</span>
-
   <div class="progress-bar">
     <div class="progress-fill" id="progressFill"></div>
   </div>
@@ -289,830 +279,374 @@ footer {
 
 <form id="checkForm">
 
-<!-- ВОПРОС 1 -->
-
 <section class="card">
-
   <h2 class="qtitle">
     <span class="num">1</span>
-
-    <span>
-      Подтверждаете ли вы, что понимаете и принимаете
-      общую стоимость товара, первоначальный взнос,
-      размер каждого платежа и даты оплаты?
-    </span>
+    <span>Подтверждаете ли вы, что понимаете и принимаете общую стоимость товара, первоначальный взнос, размер каждого платежа и даты оплаты?</span>
   </h2>
-
   <div class="options">
-
-    <label class="option">
-      <input type="radio" name="q1" value="Да">
-      Да
-    </label>
-
-    <label class="option">
-      <input type="radio" name="q1" value="Нужно разъяснение">
-      Нужно разъяснение
-    </label>
-
-    <label class="option">
-      <input type="radio" name="q1" value="Нет">
-      Нет
-    </label>
-
+    <label class="option"><input type="radio" name="q1" value="Да"> Да</label>
+    <label class="option"><input type="radio" name="q1" value="Нужно разъяснение"> Нужно разъяснение</label>
+    <label class="option"><input type="radio" name="q1" value="Нет"> Нет</label>
   </div>
-
 </section>
 
-
-<!-- ВОПРОС 2 -->
-
 <section class="card">
-
   <h2 class="qtitle">
     <span class="num">2</span>
-
-    <span>
-      Понимаете ли вы, что обязаны соблюдать условия
-      заключённого договора и своевременно вносить
-      платежи, а при возникновении затруднений —
-      заранее сообщить об этом продавцу?
-    </span>
+    <span>Понимаете ли вы, что обязаны соблюдать условия заключённого договора и своевременно вносить платежи, а при возникновении затруднений — заранее сообщить об этом продавцу?</span>
   </h2>
-
   <div class="options">
-
-    <label class="option">
-      <input type="radio" name="q2" value="Да">
-      Да
-    </label>
-
-    <label class="option">
-      <input type="radio" name="q2" value="Нужно разъяснение">
-      Нужно разъяснение
-    </label>
-
-    <label class="option">
-      <input type="radio" name="q2" value="Нет">
-      Нет
-    </label>
-
+    <label class="option"><input type="radio" name="q2" value="Да"> Да</label>
+    <label class="option"><input type="radio" name="q2" value="Нужно разъяснение"> Нужно разъяснение</label>
+    <label class="option"><input type="radio" name="q2" value="Нет"> Нет</label>
   </div>
-
 </section>
 
-
-<!-- ВОПРОС 3 -->
-
 <section class="card">
-
   <h2 class="qtitle">
     <span class="num">3</span>
-
-    <span>
-      Для какой цели вы приобретаете товар?
-    </span>
+    <span>Для какой цели вы приобретаете товар?</span>
   </h2>
-
   <div class="options">
-
-    <label class="option">
-      <input type="radio" name="q3"
-             value="Для личного пользования">
-      Для личного пользования
-    </label>
-
-    <label class="option">
-      <input type="radio" name="q3"
-             value="Для перепродажи">
-      Для перепродажи
-    </label>
-
-    <label class="option">
-      <input type="radio" name="q3"
-             value="Другая цель">
-      Другая цель
-    </label>
-
+    <label class="option"><input type="radio" name="q3" value="Для личного пользования"> Для личного пользования</label>
+    <label class="option"><input type="radio" name="q3" value="Для перепродажи"> Для перепродажи</label>
+    <label class="option"><input type="radio" name="q3" value="Другая цель"> Другая цель</label>
   </div>
-
-  <label class="field-label" for="purpose">
-    Пояснение
-  </label>
-
-  <input
-    class="field"
-    id="purpose"
-    name="purpose"
-    placeholder="Укажите цель приобретения товара"
-  >
-
+  <label class="field-label" for="purpose">Пояснение</label>
+  <input class="field" id="purpose" name="purpose" placeholder="Укажите цель приобретения товара">
 </section>
 
-
-<!-- ВОПРОС 4 -->
-
 <section class="card">
-
   <h2 class="qtitle">
     <span class="num">4</span>
-
-    <span>
-      Есть ли человек, который добровольно согласился
-      выступить поручителем или помочь с оплатой,
-      если у вас возникнут финансовые трудности?
-    </span>
+    <span>Есть ли человек, который добровольно согласился выступить поручителем или помочь с оплатой, если у вас возникнут финансовые трудности?</span>
   </h2>
-
   <div class="options">
-
-    <label class="option">
-      <input type="radio" name="q4" value="Да">
-      Да
-    </label>
-
-    <label class="option">
-      <input type="radio" name="q4" value="Нет">
-      Нет
-    </label>
-
-    <label class="option">
-      <input type="radio" name="q4" value="Пока не знаю">
-      Пока не знаю
-    </label>
-
+    <label class="option"><input type="radio" name="q4" value="Да"> Да</label>
+    <label class="option"><input type="radio" name="q4" value="Нет"> Нет</label>
+    <label class="option"><input type="radio" name="q4" value="Пока не знаю"> Пока не знаю</label>
   </div>
 
   <div class="two">
-
     <div>
-      <label class="field-label" for="guarantor">
-        Имя поручителя
-      </label>
-
-      <input
-        class="field"
-        id="guarantor"
-        name="guarantor"
-        placeholder="Имя и фамилия"
-      >
+      <label class="field-label" for="guarantor">Имя поручителя</label>
+      <input class="field" id="guarantor" name="guarantor" placeholder="Имя и фамилия">
     </div>
 
     <div>
-      <label class="field-label" for="guarantorPhone">
-        Телефон поручителя
-      </label>
-
-      <input
-        class="field"
-        id="guarantorPhone"
-        name="guarantorPhone"
-        type="tel"
-        placeholder="+7 ..."
-      >
+      <label class="field-label" for="guarantorPhone">Телефон поручителя</label>
+      <div class="phone-wrap">
+        <span class="phone-prefix">+7</span>
+        <input class="field phone-rest" id="guarantorPhone"
+               name="guarantorPhone" type="tel" inputmode="numeric"
+               autocomplete="tel-national" maxlength="10"
+               placeholder="9001234567">
+      </div>
     </div>
-
   </div>
 
-  <p class="hint">
-    Указывайте контактные данные только с согласия
-    этого человека.
-  </p>
-
+  <p class="hint">Указывайте контактные данные только с согласия этого человека.</p>
 </section>
 
-
-<!-- ВОПРОС 5 -->
-
 <section class="card">
-
   <h2 class="qtitle">
     <span class="num">5</span>
-
-    <span>
-      Останутся ли у вас деньги на необходимые расходы,
-      включая жильё, питание, лечение и содержание семьи,
-      после внесения платежа с учётом других долгов
-      и обязательств?
-    </span>
+    <span>Останутся ли у вас деньги на необходимые расходы, включая жильё, питание, лечение и содержание семьи, после внесения платежа с учётом других долгов и обязательств?</span>
   </h2>
-
   <div class="options">
-
-    <label class="option">
-      <input type="radio" name="q5" value="Да">
-      Да
-    </label>
-
-    <label class="option">
-      <input type="radio" name="q5" value="Не уверен(а)">
-      Не уверен(а)
-    </label>
-
-    <label class="option">
-      <input type="radio" name="q5" value="Нет">
-      Нет
-    </label>
-
+    <label class="option"><input type="radio" name="q5" value="Да"> Да</label>
+    <label class="option"><input type="radio" name="q5" value="Не уверен(а)"> Не уверен(а)</label>
+    <label class="option"><input type="radio" name="q5" value="Нет"> Нет</label>
   </div>
-
 </section>
 
-
-<!-- ВОПРОС 6 -->
-
 <section class="card">
-
   <h2 class="qtitle">
     <span class="num">6</span>
-
-    <span>
-      Если возникнет задержка или невозможность оплатить
-      вовремя, готовы ли вы заранее связаться с продавцом
-      и честно сообщить о своей ситуации?
-    </span>
+    <span>Если возникнет задержка или невозможность оплатить вовремя, готовы ли вы заранее связаться с продавцом и честно сообщить о своей ситуации?</span>
   </h2>
-
   <div class="options">
-
-    <label class="option">
-      <input type="radio" name="q6" value="Да">
-      Да
-    </label>
-
-    <label class="option">
-      <input type="radio" name="q6" value="Не уверен(а)">
-      Не уверен(а)
-    </label>
-
-    <label class="option">
-      <input type="radio" name="q6" value="Нет">
-      Нет
-    </label>
-
+    <label class="option"><input type="radio" name="q6" value="Да"> Да</label>
+    <label class="option"><input type="radio" name="q6" value="Не уверен(а)"> Не уверен(а)</label>
+    <label class="option"><input type="radio" name="q6" value="Нет"> Нет</label>
   </div>
-
 </section>
 
-
-<!-- ВОПРОС 7 -->
-
 <section class="card">
-
   <h2 class="qtitle">
     <span class="num">7</span>
-
-    <span>
-      Согласны ли вы, чтобы продавец связался
-      с указанным вами поручителем в случае необходимости,
-      если вы заранее согласовали такую возможность?
-    </span>
+    <span>Согласны ли вы, чтобы продавец связался с указанным вами поручителем в случае необходимости, если вы заранее согласовали такую возможность?</span>
   </h2>
-
   <div class="options">
-
-    <label class="option">
-      <input type="radio" name="q7"
-             value="Да, согласен(на)">
-      Да, согласен(на)
-    </label>
-
-    <label class="option">
-      <input type="radio" name="q7"
-             value="Нет, не согласен(на)">
-      Нет, не согласен(на)
-    </label>
-
-    <label class="option">
-      <input type="radio" name="q7"
-             value="Поручителя нет">
-      Поручителя нет
-    </label>
-
+    <label class="option"><input type="radio" name="q7" value="Да, согласен(на)"> Да, согласен(на)</label>
+    <label class="option"><input type="radio" name="q7" value="Нет, не согласен(на)"> Нет, не согласен(на)</label>
+    <label class="option"><input type="radio" name="q7" value="Поручителя нет"> Поручителя нет</label>
   </div>
-
 </section>
 
-
-<!-- ВОПРОС 8 -->
-
 <section class="card">
-
   <h2 class="qtitle">
     <span class="num">8</span>
-
-    <span>
-      Прочитали ли вы договор, понимаете ли свои права
-      и обязанности и есть ли у вас возможность задать
-      вопросы до его подписания?
-    </span>
+    <span>Прочитали ли вы договор, понимаете ли свои права и обязанности и есть ли у вас возможность задать вопросы до его подписания?</span>
   </h2>
-
   <div class="options">
-
-    <label class="option">
-      <input type="radio" name="q8" value="Да">
-      Да
-    </label>
-
-    <label class="option">
-      <input type="radio" name="q8"
-             value="Нужно разъяснение">
-      Нужно разъяснение
-    </label>
-
-    <label class="option">
-      <input type="radio" name="q8" value="Нет">
-      Нет
-    </label>
-
+    <label class="option"><input type="radio" name="q8" value="Да"> Да</label>
+    <label class="option"><input type="radio" name="q8" value="Нужно разъяснение"> Нужно разъяснение</label>
+    <label class="option"><input type="radio" name="q8" value="Нет"> Нет</label>
   </div>
-
 </section>
 
-
-<!-- ВОПРОС 9 -->
-
 <section class="card">
-
   <h2 class="qtitle">
     <span class="num">9</span>
-
-    <span>
-      Подтверждаете ли вы, что отвечаете правдиво,
-      принимаете решение добровольно и попросите
-      разъяснить непонятные условия до заключения договора?
-    </span>
+    <span>Подтверждаете ли вы, что отвечаете правдиво, принимаете решение добровольно и попросите разъяснить непонятные условия до заключения договора?</span>
   </h2>
-
   <div class="options">
-
-    <label class="option">
-      <input type="radio" name="q9" value="Да">
-      Да
-    </label>
-
-    <label class="option">
-      <input type="radio" name="q9"
-             value="Нужно разъяснение">
-      Нужно разъяснение
-    </label>
-
-    <label class="option">
-      <input type="radio" name="q9" value="Нет">
-      Нет
-    </label>
-
+    <label class="option"><input type="radio" name="q9" value="Да"> Да</label>
+    <label class="option"><input type="radio" name="q9" value="Нужно разъяснение"> Нужно разъяснение</label>
+    <label class="option"><input type="radio" name="q9" value="Нет"> Нет</label>
   </div>
-
 </section>
 
-
-<!-- КОНТАКТНЫЕ ДАННЫЕ -->
-
 <section class="card">
-
   <h2 class="qtitle">
     <span class="num">+</span>
-
-    <span>
-      Контактные данные
-    </span>
+    <span>Контактные данные</span>
   </h2>
 
   <div class="two">
-
     <div>
-      <label class="field-label" for="customerName">
-        Имя покупателя
-      </label>
-
-      <input
-        class="field"
-        id="customerName"
-        name="customerName"
-        placeholder="Имя и фамилия"
-      >
+      <label class="field-label" for="customerName">Имя покупателя</label>
+      <input class="field" id="customerName" name="customerName"
+             autocomplete="name" placeholder="Имя и фамилия">
     </div>
 
     <div>
-      <label class="field-label" for="customerPhone">
-        Телефон покупателя
-      </label>
-
-      <input
-        class="field"
-        id="customerPhone"
-        name="customerPhone"
-        type="tel"
-        placeholder="+7 ..."
-      >
+      <label class="field-label" for="customerPhone">Телефон покупателя</label>
+      <div class="phone-wrap">
+        <span class="phone-prefix">+7</span>
+        <input class="field phone-rest" id="customerPhone"
+               name="customerPhone" type="tel" inputmode="numeric"
+               autocomplete="tel-national" maxlength="10"
+               placeholder="9001234567">
+      </div>
     </div>
-
   </div>
 
   <label class="option" style="margin-top:14px">
-
     <input type="checkbox" id="consent">
-
-    <span>
-      Я согласен(на) открыть подготовленное сообщение
-      в WhatsApp и самостоятельно подтвердить его отправку.
-    </span>
-
+    <span>Я согласен(на) открыть подготовленное сообщение в WhatsApp и самостоятельно подтвердить его отправку.</span>
   </label>
-
 </section>
 
-
-<!-- КНОПКИ -->
-
 <div class="actions">
-
-  <button
-    class="primary"
-    type="button"
-    id="sendBtn"
-  >
-    Сформировать сообщение для WhatsApp
-  </button>
-
-  <button
-    class="secondary"
-    type="button"
-    id="demoBtn"
-  >
-    Показать тестовый пример
-  </button>
-
-  <button
-    class="secondary"
-    type="reset"
-  >
-    Очистить ответы
-  </button>
-
+  <button class="primary" type="button" id="sendBtn">Сформировать сообщение для WhatsApp</button>
+  <button class="secondary" type="button" id="demoBtn">Показать тестовый пример</button>
+  <button class="secondary" type="reset">Очистить ответы</button>
 </div>
 
-<div
-  class="result"
-  id="result"
-  aria-live="polite"
-></div>
+<div class="result" id="result" aria-live="polite"></div>
 
-<p class="small">
-  Сообщение откроется в WhatsApp.
-  Для отправки необходимо нажать кнопку отправки
-  непосредственно в WhatsApp.
-</p>
+<p class="small">Сообщение откроется в WhatsApp. Для отправки необходимо нажать кнопку отправки непосредственно в WhatsApp.</p>
 
 </form>
 
 <footer>
-  Анкета предназначена для предварительной проверки
-  понимания условий сделки. Ответы не заменяют
-  подписанный договор.
+  Анкета предназначена для предварительной проверки понимания условий сделки. Ответы не заменяют подписанный договор.
 </footer>
 
 </div>
 
-
 <script>
-
 const form = document.getElementById("checkForm");
-
 const result = document.getElementById("result");
-
 const progressText = document.getElementById("progressText");
-
 const progressFill = document.getElementById("progressFill");
 
+/* В телефонных полях вводятся только 10 цифр после +7. */
+function digitsOnly(value) {
+  return value.replace(/\D/g, "").slice(0, 10);
+}
 
-/* СЧЁТЧИК ОТВЕТОВ */
+document.querySelectorAll(".phone-rest").forEach(input => {
+  input.addEventListener("input", () => {
+    input.value = digitsOnly(input.value);
+  });
+
+  input.addEventListener("paste", event => {
+    event.preventDefault();
+
+    const pasted = (event.clipboardData || window.clipboardData)
+      .getData("text");
+
+    let digits = pasted.replace(/\D/g, "");
+
+    if (digits.length === 11 &&
+        (digits.startsWith("7") || digits.startsWith("8"))) {
+      digits = digits.slice(1);
+    }
+
+    input.value = digits.slice(0, 10);
+  });
+});
+
+function fullPhone(id) {
+  const rest = digitsOnly(document.getElementById(id).value);
+  return rest ? "+7" + rest : "Не указан";
+}
 
 function updateProgress() {
-
   let count = 0;
 
   for (let i = 1; i <= 9; i++) {
-
-    const answer = form.querySelector(
-      `input[name="q${i}"]:checked`
-    );
-
-    if (answer) {
+    if (form.querySelector(`input[name="q${i}"]:checked`)) {
       count++;
     }
-
   }
 
-  progressText.textContent =
-    `Отвечено: ${count} из 9`;
-
-  progressFill.style.width =
-    (count / 9 * 100) + "%";
-
+  progressText.textContent = `Отвечено: ${count} из 9`;
+  progressFill.style.width = (count / 9 * 100) + "%";
 }
-
 
 form.addEventListener("change", updateProgress);
 
-
-/* ПОЛУЧЕНИЕ ОТВЕТА */
-
 function getVal(name) {
-
-  const element = form.querySelector(
-    `input[name="${name}"]:checked`
-  );
-
+  const element = form.querySelector(`input[name="${name}"]:checked`);
   return element ? element.value : "Не отвечено";
-
 }
 
-
-/* ФОРМИРОВАНИЕ СООБЩЕНИЯ */
-
 function makeMessage() {
-
   const labels = {
-
     q1: "Понимание суммы и графика платежей",
-
     q2: "Обязательство соблюдать договор",
-
     q3: "Цель приобретения товара",
-
     q4: "Поручитель или помощь с оплатой",
-
     q5: "Средства на необходимые расходы",
-
     q6: "Действия при трудностях с оплатой",
-
     q7: "Согласие на контакт с поручителем",
-
     q8: "Понимание договора",
-
     q9: "Добровольность и правдивость ответов"
-
   };
 
   const lines = [
-
     "АНКЕТА ПЕРЕД ЗАКЛЮЧЕНИЕМ ДОГОВОРА",
-
     "",
-
     "Имя покупателя: " +
-      (document.getElementById("customerName").value.trim()
-      || "Не указано"),
-
-    "Телефон покупателя: " +
-      (document.getElementById("customerPhone").value.trim()
-      || "Не указан"),
-
+      (document.getElementById("customerName").value.trim() || "Не указано"),
+    "Телефон покупателя: " + fullPhone("customerPhone"),
     ""
-
   ];
 
-
   for (let i = 1; i <= 9; i++) {
-
-    lines.push(
-      i + ". " +
-      labels["q" + i] +
-      ": " +
-      getVal("q" + i)
-    );
-
+    lines.push(i + ". " + labels["q" + i] + ": " + getVal("q" + i));
   }
 
-
   lines.push("");
+  lines.push("Цель приобретения: " +
+    (document.getElementById("purpose").value.trim() || "Не указана"));
 
-  lines.push(
-    "Цель приобретения: " +
-    (document.getElementById("purpose").value.trim()
-    || "Не указана")
-  );
+  lines.push("Имя поручителя: " +
+    (document.getElementById("guarantor").value.trim() || "Не указано"));
 
-  lines.push(
-    "Имя поручителя: " +
-    (document.getElementById("guarantor").value.trim()
-    || "Не указано")
-  );
-
-  lines.push(
-    "Телефон поручителя: " +
-    (document.getElementById("guarantorPhone").value.trim()
-    || "Не указан")
-  );
-
+  lines.push("Телефон поручителя: " + fullPhone("guarantorPhone"));
   lines.push("");
-
-  lines.push(
-    "Это ответы анкеты, а не замена подписанного договора."
-  );
-
+  lines.push("Это ответы анкеты, а не замена подписанного договора.");
 
   return lines.join("\n");
-
 }
 
+document.getElementById("sendBtn").addEventListener("click", function() {
+  if (!document.getElementById("consent").checked) {
+    alert("Подтвердите согласие на открытие сообщения в WhatsApp.");
+    return;
+  }
 
-/* ОТПРАВКА В WHATSAPP */
+  const unanswered = [];
 
-document.getElementById("sendBtn")
-  .addEventListener("click", function() {
-
-    const consent =
-      document.getElementById("consent").checked;
-
-    if (!consent) {
-
-      alert(
-        "Подтвердите согласие на открытие сообщения в WhatsApp."
-      );
-
-      return;
-
+  for (let i = 1; i <= 9; i++) {
+    if (!form.querySelector(`input[name="q${i}"]:checked`)) {
+      unanswered.push(i);
     }
+  }
 
-
-    const unanswered = [];
-
-    for (let i = 1; i <= 9; i++) {
-
-      if (!form.querySelector(
-        `input[name="q${i}"]:checked`
-      )) {
-
-        unanswered.push(i);
-
-      }
-
-    }
-
-
-    if (unanswered.length > 0) {
-
-      const proceed = confirm(
-        "Не отвечены вопросы: " +
-        unanswered.join(", ") +
-        ". Сформировать сообщение всё равно?"
-      );
-
-      if (!proceed) {
-        return;
-      }
-
-    }
-
-
-    const message = makeMessage();
-
-    result.textContent = message;
-
-    result.classList.add("show");
-
-
-    /*
-      НОМЕР WHATSAPP ПОЛУЧАТЕЛЯ.
-
-      Сейчас указан номер из предыдущего варианта.
-      Если нужно отправлять на другой номер,
-      измените цифры ниже.
-
-      Формат: код страны и номер без плюса,
-      пробелов и скобок.
-    */
-
-    const recipient = "79887836677";
-
-
-    const whatsappURL =
-      "https://wa.me/" +
-      recipient +
-      "?text=" +
-      encodeURIComponent(message);
-
-
-    window.open(
-      whatsappURL,
-      "_blank"
+  if (unanswered.length > 0) {
+    const proceed = confirm(
+      "Не отвечены вопросы: " + unanswered.join(", ") +
+      ". Сформировать сообщение всё равно?"
     );
 
+    if (!proceed) return;
+  }
 
-    result.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
+  const message = makeMessage();
 
+  result.textContent = message;
+  result.classList.add("show");
+
+  /* Номер получателя WhatsApp. Замените, если нужно. */
+  const recipient = "79887836677";
+
+  const whatsappURL =
+    "https://wa.me/" + recipient +
+    "?text=" + encodeURIComponent(message);
+
+  window.open(whatsappURL, "_blank");
+
+  result.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
   });
-
-
-/* ТЕСТОВЫЙ РЕЖИМ */
-
-document.getElementById("demoBtn")
-  .addEventListener("click", function() {
-
-    const demoAnswers = {
-
-      q1: "Да",
-
-      q2: "Да",
-
-      q3: "Для перепродажи",
-
-      q4: "Да",
-
-      q5: "Да",
-
-      q6: "Да",
-
-      q7: "Да, согласен(на)",
-
-      q8: "Да",
-
-      q9: "Да"
-
-    };
-
-
-    for (const [name, value] of Object.entries(demoAnswers)) {
-
-      const options = [
-        ...form.querySelectorAll(
-          `input[name="${name}"]`
-        )
-      ];
-
-      const element = options.find(
-        option => option.value === value
-      );
-
-      if (element) {
-        element.checked = true;
-      }
-
-    }
-
-
-    document.getElementById("customerName").value =
-      "ТЕСТОВЫЙ КЛИЕНТ";
-
-    document.getElementById("customerPhone").value =
-      "+7 900 000-00-00";
-
-    document.getElementById("purpose").value =
-      "Тест: перепродажа товара";
-
-    document.getElementById("guarantor").value =
-      "ТЕСТОВЫЙ ПОРУЧИТЕЛЬ";
-
-    document.getElementById("guarantorPhone").value =
-      "+7 900 000-00-01";
-
-
-    updateProgress();
-
-
-    result.textContent =
-      "ТЕСТОВЫЙ РЕЖИМ — ДАННЫЕ ВЫМЫШЛЕНЫ\n\n" +
-      makeMessage();
-
-    result.classList.add("show");
-
-
-    result.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-
-  });
-
-
-/* ОЧИСТКА ФОРМЫ */
-
-form.addEventListener("reset", function() {
-
-  setTimeout(function() {
-
-    updateProgress();
-
-    result.classList.remove("show");
-
-    result.textContent = "";
-
-  }, 0);
-
 });
 
+document.getElementById("demoBtn").addEventListener("click", function() {
+  const demoAnswers = {
+    q1: "Да",
+    q2: "Да",
+    q3: "Для перепродажи",
+    q4: "Да",
+    q5: "Да",
+    q6: "Да",
+    q7: "Да, согласен(на)",
+    q8: "Да",
+    q9: "Да"
+  };
 
-/* ПЕРВОНАЧАЛЬНЫЙ ЗАПУСК */
+  for (const [name, value] of Object.entries(demoAnswers)) {
+    const options = [...form.querySelectorAll(`input[name="${name}"]`)];
+    const element = options.find(option => option.value === value);
+
+    if (element) element.checked = true;
+  }
+
+  document.getElementById("customerName").value = "ТЕСТОВЫЙ КЛИЕНТ";
+  document.getElementById("customerPhone").value = "9000000000";
+  document.getElementById("purpose").value = "Тест: перепродажа товара";
+  document.getElementById("guarantor").value = "ТЕСТОВЫЙ ПОРУЧИТЕЛЬ";
+  document.getElementById("guarantorPhone").value = "9000000001";
+
+  updateProgress();
+
+  result.textContent =
+    "ТЕСТОВЫЙ РЕЖИМ — ДАННЫЕ ВЫМЫШЛЕНЫ\n\n" + makeMessage();
+
+  result.classList.add("show");
+
+  result.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+});
+
+form.addEventListener("reset", function() {
+  setTimeout(function() {
+    updateProgress();
+    result.classList.remove("show");
+    result.textContent = "";
+  }, 0);
+});
 
 updateProgress();
-
 </script>
 
 </body>
