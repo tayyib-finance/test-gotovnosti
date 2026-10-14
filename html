@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#173c2c">
+<title>СУММА — проверка готовности к рассрочке</title>
+<style>
+:root{--bg:#f5f6f4;--card:#fff;--ink:#17251e;--muted:#66736b;--green:#173c2c;--green2:#2f684b;--lime:#dff0c2;--line:#e3e9e4;--gold:#fff6df;--goldink:#745814;--redbg:#fff0ed;--red:#8b3028}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.page{max-width:760px;margin:0 auto;padding:22px 16px 40px}.brand{display:flex;align-items:center;gap:11px;margin-bottom:20px}.logo{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:var(--lime);color:var(--green);font-size:22px;font-weight:900}.brand b{font-size:20px}.brand small{display:block;color:var(--muted);font-size:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:19px;padding:clamp(20px,5vw,34px);box-shadow:0 12px 34px #17251e0b}.kicker{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--green2);font-weight:850}.intro h1{font-size:clamp(26px,6vw,35px);line-height:1.13;letter-spacing:-.6px;margin:8px 0 10px}.intro>p{color:var(--muted);margin:0 0 18px}.notice{padding:14px 15px;border-radius:13px;background:#f1f6ed;color:#304737;font-size:14px;margin:16px 0}.notice strong{color:var(--green)}.steps{display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--muted);font-size:12px;margin:22px 0 9px}.track{height:7px;background:#e9eee8;border-radius:20px;overflow:hidden}.fill{width:20%;height:100%;background:var(--green2);border-radius:20px;transition:width .2s}.question{margin:23px 0 18px;font-size:21px;line-height:1.34;letter-spacing:-.2px;font-weight:750}.choices{display:grid;gap:9px}.choice{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;transition:.15s}.choice:hover{border-color:#9bb39e;background:#fbfdf9}.choice.selected{border-color:var(--green2);background:#f0f6ed;box-shadow:0 0 0 2px #2f684b14}.radio{width:21px;height:21px;border:1.5px solid #9aa69d;border-radius:50%;display:grid;place-items:center;flex:none}.selected .radio{border-color:var(--green2)}.selected .radio:after{content:"";width:11px;height:11px;border-radius:50%;background:var(--green2)}.choice span:last-child{font-weight:650}.navbuttons{display:flex;justify-content:space-between;gap:10px;margin-top:22px}.btn{min-height:46px;padding:10px 16px;border-radius:11px;border:1px solid #d5ded7;background:#fff;color:var(--ink);font:inherit;font-weight:750;cursor:pointer}.btn.primary{background:var(--green);color:#fff;border-color:var(--green)}.btn:disabled{opacity:.45;cursor:not-allowed}.small{color:var(--muted);font-size:12px;margin:14px 0 0}.result{display:none}.result.show{display:block}.result h2{font-size:26px;line-height:1.2;margin:7px 0 10px}.resultbox{padding:15px;border-radius:13px;background:#f0f6ed;color:#294333;margin:17px 0}.resultbox.caution{background:var(--gold);color:var(--goldink)}.resultbox.stop{background:var(--redbg);color:#712b25}.resultbox b{display:block;font-size:16px;margin-bottom:4px}.result p{color:var(--muted)}.religious{border-left:3px solid #91aa75;padding:11px 14px;margin:19px 0;color:#435247;background:#fafcf8;border-radius:0 10px 10px 0;font-size:14px}.religious b{color:var(--green)}.footer{margin:16px 3px 0;text-align:center;color:#79837c;font-size:11px}.linkbtn{display:inline-block;margin-top:4px;color:var(--green2);font-weight:750;text-decoration:none}.linkbtn:hover{text-decoration:underline}.hidden{display:none!important}
+@media(max-width:480px){.page{padding:15px 10px 28px}.brand{margin-bottom:13px}.question{font-size:19px}.navbuttons .btn{flex:1}.navbuttons{align-items:stretch}}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="brand"><span class="logo">Σ</span><div><b>СУММА</b><small>Товарная рассрочка</small></div></header>
+<section class="card intro" id="quiz">
+<div class="kicker">Короткая самопроверка</div>
+<h1>Готовы ли вы к обязательствам по рассрочке?</h1>
+<p>Ответьте честно для себя. Это не проверка веры и не гарантия одобрения: тест помогает ещё раз оценить условия и собственную готовность.</p>
+<div class="notice"><strong>Исламское напоминание.</strong> В исламе к долгу относятся серьёзно: беря долг, человек должен иметь намерение его вернуть. Честность и исполнение обещаний — ответственность за свои намерения и поступки перед Аллахом в Судный день. Если возникли трудности, важно не обманывать и не скрываться, а честно сообщить об этом и искать решение. Эта самопроверка не судит человека и не определяет его веру или искренность.</div>
+<div class="steps"><span id="stepLabel">Вопрос 1 из 10</span><span>Ответы не сохраняются</span></div>
+<div class="track"><div class="fill" id="progress"></div></div>
+<div class="question" id="questionText"></div>
+<div class="choices" id="choices"></div>
+<div class="navbuttons" id="navbuttons"><button class="btn" id="backBtn" type="button" disabled>Назад</button><button class="btn primary" id="nextBtn" type="button" disabled>Далее</button></div>
+<p class="small">Ответы остаются только в открытой вкладке браузера: мы не собираем имя, телефон или паспортные данные.</p>
+</section>
+<section class="card result" id="result" aria-live="polite">
+<div class="kicker">Итог самопроверки</div>
+<h2 id="resultTitle"></h2>
+<div class="resultbox" id="resultBox"><b id="resultLead"></b><span id="resultText"></span></div>
+<p id="resultExtra"></p>
+<div class="religious"><b>Помните:</b> тест не может определить истинные намерения человека и не заменяет личное решение, проверку платёжеспособности или совет знающего специалиста.</div>
+<div class="navbuttons"><button class="btn" id="restartBtn" type="button">Пройти заново</button><a class="btn primary linkbtn" href="https://tayyib-finance.github.io/summa-calculator/">Вернуться к калькулятору</a></div>
+</section>
+<p class="footer">Самопроверка добровольная. Она не является религиозным постановлением, кредитным решением или обещанием одобрения.</p>
+</main>
+<script>
+const questions=[
+'Беру ли я рассрочку с намерением вернуть весь долг, а не уклоняться от оплаты?',
+'Понимаю ли я, что в исламе долг — серьёзная ответственность и его нужно возвращать?',
+'Знаю ли я, сколько всего заплачу за товар?',
+'Знаю ли я сумму и дату каждого платежа?',
+'Останутся ли у меня деньги на необходимые расходы семьи после платежа?',
+'Учёл(а) ли я другие долги и постоянные расходы?',
+'Скажу ли я продавцу правду о своих доходах и обязательствах?',
+'Если платить станет трудно, предупрежу ли я продавца заранее, а не буду пропадать?',
+'Если уже сейчас понимаю, что не справлюсь с платежами, отложу ли я покупку?',
+'Если сомневаюсь, можно ли заключать именно такую рассрочку по правилам ислама, уточню ли я это у знающего человека?'
+];
+const labels=[{v:'yes',t:'Да'},{v:'unsure',t:'Не уверен(а)'},{v:'no',t:'Нет'}];
+const answers=Array(questions.length).fill(null);let index=0;
+const qEl=document.getElementById('questionText'),choicesEl=document.getElementById('choices'),stepEl=document.getElementById('stepLabel'),progress=document.getElementById('progress'),backBtn=document.getElementById('backBtn'),nextBtn=document.getElementById('nextBtn'),quiz=document.getElementById('quiz'),result=document.getElementById('result');
+function render(){qEl.textContent=questions[index];stepEl.textContent=`Вопрос ${index+1} из ${questions.length}`;progress.style.width=`${((index+1)/questions.length)*100}%`;backBtn.disabled=index===0;nextBtn.disabled=answers[index]===null;nextBtn.textContent=index===questions.length-1?'Посмотреть итог':'Далее';choicesEl.replaceChildren();labels.forEach(item=>{const button=document.createElement('button');button.type='button';button.className='choice'+(answers[index]===item.v?' selected':'');button.setAttribute('aria-pressed',answers[index]===item.v?'true':'false');const radio=document.createElement('span');radio.className='radio';const text=document.createElement('span');text.textContent=item.t;button.append(radio,text);button.addEventListener('click',()=>{answers[index]=item.v;render()});choicesEl.append(button)})}
+function showResult(){const yes=answers.filter(x=>x==='yes').length,unsure=answers.filter(x=>x==='unsure').length,no=answers.filter(x=>x==='no').length;const box=document.getElementById('resultBox');box.className='resultbox';let title,lead,copy,extra;if(no){box.classList.add('stop');title='Лучше остановиться и всё пересчитать';lead='Не подтверждайте обязательство, пока не готовы.';copy='Если график не по силам или вы не готовы соблюдать его, не подавайте заявку сейчас. Пересмотрите бюджет и уточните условия рассрочки.';extra='Честный отказ или просьба изменить условия лучше, чем заведомо невыполнимое обещание.'}else if(unsure){box.classList.add('caution');title='Сначала уточните условия';lead='У вас остались сомнения.';copy='Перечитайте общую стоимость и даты платежей. При необходимости задайте вопросы продавцу или посоветуйтесь с близкими/специалистом, прежде чем соглашаться.';extra='Не спешите подтверждать договор, пока не понимаете его условия и не уверены в бюджете.'}else{title='Вы ответили, что готовы';lead='Вы ответили «Да» на все вопросы.';copy='Это отражает только вашу самооценку сейчас: вы заявили, что понимаете условия и намерены платить. Тест не доказывает намерения, не гарантирует будущую возможность платить и не подтверждает соответствие договора исламским правилам.';extra='Перед согласием ещё раз проверьте график и условия. Если сомневаетесь в соответствии сделки исламским правилам, уточните это у знающего специалиста.'}document.getElementById('resultTitle').textContent=title;document.getElementById('resultLead').textContent=lead;document.getElementById('resultText').textContent=copy;document.getElementById('resultExtra').textContent=extra;quiz.classList.add('hidden');result.classList.add('show');window.scrollTo({top:0,behavior:'smooth'})}
+backBtn.addEventListener('click',()=>{if(index>0){index--;render()}});nextBtn.addEventListener('click',()=>{if(answers[index]===null)return;if(index<questions.length-1){index++;render()}else showResult()});document.getElementById('restartBtn').addEventListener('click',()=>{answers.fill(null);index=0;result.classList.remove('show');quiz.classList.remove('hidden');render();window.scrollTo({top:0,behavior:'smooth'})});
+render();
+</script>
+</body>
+</html>
