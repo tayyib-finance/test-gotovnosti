@@ -16,8 +16,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,
 .page{max-width:850px;margin:0 auto;padding:22px 16px 44px}
 .brand{display:flex;align-items:center;gap:11px;margin-bottom:18px}
 .logo{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:var(--lime);color:var(--green);font-size:22px;font-weight:900}
-.brand b{font-size:20px}
-.brand small{display:block;color:var(--muted);font-size:12px}
+.brand b{font-size:20px}.brand small{display:block;color:var(--muted);font-size:12px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:clamp(18px,4vw,28px);box-shadow:0 12px 34px #17251e0a;margin:14px 0}
 .kicker{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--green2);font-weight:850}
 h1{font-size:clamp(27px,5vw,36px);line-height:1.13;letter-spacing:-.6px;margin:7px 0 10px}
@@ -32,6 +31,11 @@ p{margin:8px 0}
 .field label,.field-title{font-weight:750}
 input[type=text],input[type=tel]{width:100%;min-height:46px;border:1px solid #cfd9d1;border-radius:10px;padding:10px 12px;font:inherit;background:#fff;color:var(--ink)}
 input:focus{outline:3px solid #2f684b27;border-color:var(--green2)}
+.phone-input{display:flex;align-items:center;min-height:46px;border:1px solid #cfd9d1;border-radius:10px;background:#fff}
+.phone-input:focus-within{outline:3px solid #2f684b27;border-color:var(--green2)}
+.phone-prefix{padding:0 12px;border-right:1px solid var(--line);color:var(--green);font-weight:800;white-space:nowrap}
+.phone-input input[type=tel]{min-width:0;min-height:44px;border:0;border-radius:0;background:transparent;outline:none;box-shadow:none}
+.phone-input input[type=tel]:focus{border-color:transparent;outline:none}
 .hint{font-size:12px;color:var(--muted)}
 .questions{display:grid;gap:12px}
 .question{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 19px;box-shadow:0 8px 24px #17251e07}
@@ -57,19 +61,12 @@ input:focus{outline:3px solid #2f684b27;border-color:var(--green2)}
 .preview pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f6f8f5;border:1px solid var(--line);border-radius:12px;padding:14px;font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;max-height:420px;overflow:auto}
 .hidden{display:none!important}
 .footer{margin-top:18px;text-align:center;color:#707a73;font-size:12px}
-@media(max-width:600px){
-  .page{padding:15px 10px 30px}
-  .contact-grid,.subfields{grid-template-columns:1fr}
-  .options{grid-template-columns:1fr}
-  .question{padding:15px}
-  .actions .btn{width:100%}
-}
+@media(max-width:600px){.page{padding:15px 10px 30px}.contact-grid,.subfields{grid-template-columns:1fr}.options{grid-template-columns:1fr}.question{padding:15px}.actions .btn{width:100%}}
 </style>
 </head>
 <body>
 <main class="page">
 <header class="brand"><span class="logo">Σ</span><div><b>СУММА</b><small>Самопроверка перед товарной рассрочкой</small></div></header>
-
 <section class="card">
 <div class="kicker">Тестовый режим · 9 вопросов</div>
 <h1>Перед тем как согласиться на рассрочку</h1>
@@ -83,7 +80,11 @@ input:focus{outline:3px solid #2f684b27;border-color:var(--green2)}
 <h2>Ваши контактные данные</h2>
 <div class="contact-grid">
 <div class="field"><label for="customerName">Ваше имя</label><input id="customerName" name="customerName" type="text" autocomplete="name" required></div>
-<div class="field"><label for="customerPhone">Ваш номер WhatsApp</label><input id="customerPhone" name="customerPhone" type="tel" autocomplete="tel" placeholder="Например, +7 900 123-45-67" required></div>
+<div class="field">
+<label for="customerPhone">Ваш номер WhatsApp</label>
+<div class="phone-input"><span class="phone-prefix" aria-hidden="true">+7</span><input id="customerPhone" name="customerPhone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="988 783 66 77" pattern="9[0-9]{9}" title="Введите 10 цифр после +7, начиная с 9" required></div>
+<span class="hint">После +7 введите 10 цифр, начиная с 9.</span>
+</div>
 </div>
 <p class="hint">Ваш номер будет включён в сообщение компании, чтобы при необходимости связаться с вами лично. Не вводите паспортные или банковские данные.</p>
 </section>
@@ -143,7 +144,11 @@ input:focus{outline:3px solid #2f684b27;border-color:var(--green2)}
 <legend class="question-text"><span class="number">6</span> Номер телефона человека, который согласился помочь с оплатой</legend>
 <p class="hint">Заполняйте только если этот человек заранее согласился передать свои данные.</p>
 <div id="helperPhoneFields" class="subfields hidden">
-<div class="field"><label for="helperPhone">Номер телефона</label><input id="helperPhone" type="tel" autocomplete="off" placeholder="Например, +7 900 123-45-67"></div>
+<div class="field">
+<label for="helperPhone">Номер телефона</label>
+<div class="phone-input"><span class="phone-prefix" aria-hidden="true">+7</span><input id="helperPhone" type="tel" inputmode="numeric" autocomplete="off" placeholder="988 783 66 77" pattern="9[0-9]{9}" title="Введите 10 цифр после +7, начиная с 9"></div>
+<span class="hint">После +7 введите 10 цифр, начиная с 9.</span>
+</div>
 <label class="checkline"><input type="checkbox" id="helperConsent"><span>Этот человек заранее согласился, что я передам его имя и номер компании.</span></label>
 <p class="hint" style="grid-column:1/-1">Передача телефона не означает, что человек стал поручителем. Поручительство оформляется отдельно.</p>
 </div>
@@ -198,6 +203,7 @@ input:focus{outline:3px solid #2f684b27;border-color:var(--green2)}
 <script>
 const BUSINESS_WHATSAPP = '79887836677';
 const form = document.getElementById('quizForm');
+const customerPhoneInput = document.getElementById('customerPhone');
 const helperNameField = document.getElementById('helperNameField');
 const helperPhoneFields = document.getElementById('helperPhoneFields');
 const helperName = document.getElementById('helperName');
@@ -210,6 +216,27 @@ function answer(name) {
   const selected = document.querySelector(`input[name="${name}"]:checked`);
   return selected ? selected.value : '';
 }
+
+function digitsAfterRussianPrefix(value) {
+  let digits = String(value).replace(/\D/g, '');
+  if (digits.startsWith('7') || digits.startsWith('8')) digits = digits.slice(1);
+  return digits.slice(0, 10);
+}
+
+function bindRussianPhoneInput(input) {
+  input.addEventListener('input', () => {
+    input.value = digitsAfterRussianPrefix(input.value);
+  });
+}
+
+function formatRussianPhone(value) {
+  const digits = digitsAfterRussianPrefix(value);
+  if (digits.length !== 10) return `+7 ${digits}`;
+  return `+7 ${digits.slice(0,3)} ${digits.slice(3,6)}-${digits.slice(6,8)}-${digits.slice(8,10)}`;
+}
+
+bindRussianPhoneInput(customerPhoneInput);
+bindRussianPhoneInput(helperPhone);
 
 function updateHelperFields() {
   const show = answer('q4') === 'Да';
@@ -232,6 +259,8 @@ document.querySelectorAll('input[name="q4"]').forEach(input => {
 form.addEventListener('submit', event => {
   event.preventDefault();
   formError.textContent = '';
+  customerPhoneInput.value = digitsAfterRussianPrefix(customerPhoneInput.value);
+  if (answer('q4') === 'Да') helperPhone.value = digitsAfterRussianPrefix(helperPhone.value);
   if (!form.reportValidity()) return;
 
   if (answer('q4') === 'Да' && !helperConsent.checked) {
@@ -241,9 +270,9 @@ form.addEventListener('submit', event => {
   }
 
   const name = document.getElementById('customerName').value.trim();
-  const phone = document.getElementById('customerPhone').value.trim();
+  const phone = formatRussianPhone(customerPhoneInput.value);
   const helper = answer('q4') === 'Да'
-    ? `Имя: ${helperName.value.trim()}\\nСогласие на передачу данных: Да`
+    ? `Имя: ${helperName.value.trim()}\nСогласие на передачу данных: Да`
     : `Помощник: ${answer('q4')}`;
 
   const message = [
@@ -258,13 +287,13 @@ form.addEventListener('submit', event => {
     `4. Есть ли добровольно согласившийся помочь: ${answer('q4')}`,
     `   ${helper}`,
     `5. Понимание обязательства и серьёзности долга в исламе: ${answer('q5')}`,
-    `6. Контакт помощника: ${answer('q4') === 'Да' ? helperPhone.value.trim() : 'не указан'}`,
+    `6. Контакт помощника: ${answer('q4') === 'Да' ? formatRussianPhone(helperPhone.value) : 'не указан'}`,
     `7. Понимание полной стоимости и графика: ${answer('q7')}`,
     `8. Возможность платить с учётом необходимых расходов и других обязательств: ${answer('q8')}`,
     `9. Готовность заранее сообщить о трудностях: ${answer('q9')}`,
     '',
     'Сообщение подготовлено на странице теста. Отправка — только после нажатия Send в WhatsApp.'
-  ].join('\\n');
+  ].join('\n');
 
   document.getElementById('messagePreview').textContent = message;
   document.getElementById('openWhatsApp').href =
